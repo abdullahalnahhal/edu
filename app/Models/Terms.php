@@ -21,4 +21,8 @@ class Terms extends Model
   	{
   		return $this->hasOne('App\Models\Years', 'id', 'year_id');
   	}
+    public function Subjects()
+    {
+        return $this->hasMany('App\Models\Subjects', 'term_id', 'id');
+    }
 }

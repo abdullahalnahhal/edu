@@ -49,6 +49,11 @@ class TermsController extends Controller
             'action'=>'edit',
         ]);
     }
+    public function subjects($id)
+    {
+        $term = Terms::find($id);
+        return $term->subjects->toArray();
+    }
 
     public function create(TermsRequest $request, Terms $term)
     {
