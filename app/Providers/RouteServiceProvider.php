@@ -47,6 +47,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapTeacherGroupsRoutes();
         $this->mapTeacherSubjectsRoutes();
         $this->mapTeacherUnitsRoutes();
+        $this->mapTeacherQuestionTypesRoutes();
+        $this->mapTeacherQuestionsRoutes();
     }
 
     /**
@@ -81,7 +83,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapTeacherRoutes()
     {
         Route::prefix('/teacher')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/web.php'));
     }
@@ -89,43 +91,65 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapTeacherLevelsRoutes()
     {
         Route::prefix('/teacher/levels')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.levels')
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/levels.php'));
     }
     protected function mapTeacherYearsRoutes()
     {
         Route::prefix('/teacher/years')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.years')
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/years.php'));
     }
     protected function mapTeacherTermsRoutes()
     {
         Route::prefix('/teacher/terms')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.terms')
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/terms.php'));
     }
     protected function mapTeacherGroupsRoutes()
     {
         Route::prefix('/teacher/groups')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.groups')
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/groups.php'));
     }
     protected function mapTeacherSubjectsRoutes()
     {
         Route::prefix('/teacher/subjects')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.subjects')
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/subjects.php'));
     }
     protected function mapTeacherUnitsRoutes()
     {
         Route::prefix('/teacher/units')
-             ->middleware('web')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.units')
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/units.php'));
+    }
+    protected function mapTeacherQuestionTypesRoutes()
+    {
+        Route::prefix('/teacher/question-types')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.question-types')
+             ->namespace('App\Http\Controllers\TeachersControllers')
+             ->group(base_path('routes/teachers/question-types.php'));
+    }
+    protected function mapTeacherQuestionsRoutes()
+    {
+        Route::prefix('/teacher/questions')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.questions')
+             ->namespace('App\Http\Controllers\TeachersControllers')
+             ->group(base_path('routes/teachers/questions.php'));
     }
 }

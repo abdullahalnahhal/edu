@@ -18,7 +18,6 @@
         <tr>
             <td>{{$key +1 }}</td>
             <td>{{$level->level}}</td>
-            <td>{{$level->years}}</td>
             <td>
               	<a href='{{route('teachers.levels.edit', ['id'=>$level->id])}}' class='btn btn-addon btn-flat btn-info' data-toggle="tooltip" data-placement="top" data-original-title="@lang('common.Edit')">
               		<i class='ti-pencil-alt'></i>

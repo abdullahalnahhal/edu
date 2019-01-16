@@ -69,6 +69,14 @@ Common = function()
 	{
 		window.location.href = url;
 	}
+	this.unduplicate = function(item, step, hidden)
+	{
+		$('#'+item+'-'+step).remove();
+		removable = storage.counter[item].elements.indexOf(step);
+		storage.counter[item].elements.splice(removable, 1);
+		elements = storage.counter[item].elements;
+		$("#"+hidden).val(elements);
+	}
 }
 
 Command = function ()
@@ -256,6 +264,56 @@ Command = function ()
 			})
 		});
 	}
+
+	this.duplicate = function(element)
+	{
+		temp = element.attr('template');
+
+		target = element.attr('target');
+		hidden = element.attr('hdn');
+		console.log(hidden);
+		template_name = temp;
+		original = $('#'+temp);
+
+		temp = $('#'+temp).clone();
+
+		temp.removeClass('command');
+		temp.removeAttr('template');
+		temp.removeAttr('items');
+
+		elements = element.attr('items');
+		elements = elements.split(",");
+
+		if (!isset(storage.counter)) {
+			storage['counter'] = {};
+		}
+
+		if (!isset(storage.counter[template_name])) {
+			storage['counter'][template_name] = {};
+			storage['counter'][template_name]['step'] = 1;
+			storage.counter[template_name]['elements'] = [0];
+		}
+
+		for (var i = 0; i < elements.length; i++) {
+			if (temp.find('[item="'+elements[i]+'"]').attr('type') == 'checkbox') {
+				temp.find('[item="'+elements[i]+'"]').attr('value', storage.counter[template_name].step);
+				temp.find('[item="'+elements[i]+'"]').attr('name', elements[i]+"[]");
+				
+			}else{
+				temp.find('[item="'+elements[i]+'"]').attr('name', elements[i]+"-"+storage.counter[template_name].step);
+			}
+			temp.find('[item="'+elements[i]+'"]').attr('id', elements[i]+"-"+storage.counter[template_name].step);
+		}
+
+		temp.attr('id', template_name+"-"+storage.counter[template_name].step);
+		temp.append(template.remove(template_name, storage.counter[template_name].step, hidden));
+		storage.counter[template_name]['elements'].push(storage.counter[template_name].step);
+		storage.counter[template_name].step ++;
+
+		$("#"+hidden).val(storage.counter[template_name]['elements']);
+
+		$("#"+target).append(temp);
+	}
 }
 
 
@@ -324,6 +382,17 @@ Templates = function()
 				showNotification("bg-black", message, "bottom", 'right', "animated fadeIn", "animated flipOutY");
 				break;
 		}
+	}
+
+	this.remove = function (removable, step, hidden) {
+		element = '<div class="col-2 pt-1">\n'+
+			'<div class="form-group">\n'+
+				'<button type="button" class="btn btn-danger btn-flat btn-addon" onclick="common.unduplicate(\''+removable+'\', \''+step+'\', \''+hidden+'\')">\n'+
+					'<i class="ti-minus" item="remove" ></i>\n'+
+				'</button>\n'+
+			'</div>\n'+		
+		'</div>\n';
+		return element;
 	}
 }
 

@@ -8,7 +8,7 @@ class='form-control {{$classes??''}}'
 @endforeach
 >
 @else
-<select name="{{$name??'level_id'}}" id="{{$id??'level_id'}}" class='form-control {{$classes}}' {{$required??''}}>
+<select name="{{$name??'level_id'}}" id="{{$id??'level_id'}}" class='form-control {{$classes??""}}' {{$required??''}}>
 @endif
 	<option value=""></option>
 	@if(!isset($levels))

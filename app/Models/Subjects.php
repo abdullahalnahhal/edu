@@ -31,4 +31,8 @@ class Subjects extends Model
     {
         return $this->hasOne('App\Models\Terms', 'id', 'term_id');
     }
+    public function units()
+    {
+        return $this->hasMany('App\Models\Units', 'subject_id', 'id');
+    }
 }

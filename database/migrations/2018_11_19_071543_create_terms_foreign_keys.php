@@ -14,7 +14,7 @@ class CreateTermsForeignKeys extends Migration
     public function up()
     {
         Schema::table('terms', function (Blueprint $table) {
-            $table->foreign('year_id')->references('id')->on('levels');
+            $table->foreign('year_id')->references('id')->on('years');
         });
     }
 

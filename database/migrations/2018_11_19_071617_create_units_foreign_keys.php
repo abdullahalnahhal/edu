@@ -14,9 +14,9 @@ class CreateUnitsForeignKeys extends Migration
     public function up()
     {
         Schema::table('units', function (Blueprint $table) {
-            $table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('year_id')->references('id')->on('years');
-            $table->foreign('term_id')->references('id')->on('terms');
+            // $table->foreign('level_id')->references('id')->on('levels');
+            // $table->foreign('year_id')->references('id')->on('years');
+            // $table->foreign('term_id')->references('id')->on('terms');
             $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }
@@ -29,7 +29,7 @@ class CreateUnitsForeignKeys extends Migration
     public function down()
     {
         Schema::table('units', function (Blueprint $table) {
-            $table->dropForeign(['level_id', 'year_id', 'term_id', 'subject_id']);
+            $table->dropForeign([/*'level_id', 'year_id', 'term_id',*/ 'subject_id']);
         });
     }
 }

@@ -2,16 +2,16 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>@lang('Years.Year')</th>
-            <th>@lang('Years.Level')</th>
+            <th>@lang('years.Year')</th>
+            <th>@lang('years.Level')</th>
             <th>@lang('common.Actions')</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
             <th>#</th>
-            <th>@lang('Years.Year')</th>
-            <th>@lang('Years.Level')</th>
+            <th>@lang('years.Year')</th>
+            <th>@lang('years.Level')</th>
             <th>@lang('common.Actions')</th>
         </tr>
     </tfoot>

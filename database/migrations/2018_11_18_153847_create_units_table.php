@@ -17,9 +17,9 @@ class CreateUnitsTable extends Migration
             $table->increments('id');
             $table->string('unit', 50);
             $table->integer('subject_id')->unsigned()->nullable();
-            $table->integer('level_id')->unsigned()->nullable();
-            $table->integer('year_id')->unsigned()->nullable();
-            $table->integer('term_id')->unsigned()->nullable();
+            // $table->integer('level_id')->unsigned()->nullable();
+            // $table->integer('year_id')->unsigned()->nullable();
+            // $table->integer('term_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -21,6 +21,7 @@ class RedirectIfAuthenticated
             if (Auth::user()->entity->check('TCHR')) {
                 return redirect(route('teachers.index'));
             }
+
             return redirect('/home');
         }
 

@@ -13,10 +13,12 @@ class userEntitiesSeeder extends Seeder
     {
          DB::table('users_entities')->insert([
          	[
+                'id' => 1,
          		'entity' => 'Teacher',
          		'shortcut' => 'TCHR'
          	],
          	[
+                'id' => 2,
          		'entity' => 'Student',
          		'shortcut' => 'STDNT'
          	]

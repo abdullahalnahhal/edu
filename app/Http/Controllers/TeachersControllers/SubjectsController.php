@@ -50,6 +50,12 @@ class SubjectsController extends Controller
         ]);
     }
 
+    public function units($id)
+    {
+        $subjects = Subjects::find($id);
+        return $subjects->units->toArray();
+    }
+
     public function create(SubjectsRequest $request, Subjects $subject)
     {
         $subject->subject = $request->subject;
