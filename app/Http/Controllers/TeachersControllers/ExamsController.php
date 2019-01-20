@@ -27,12 +27,12 @@ class ExamsController extends Controller
     //         'question'=>$question,
     //     ]);
     // }
-    // public function new()
-    // {
-    //     return view('teachers.questions.form', [
-    //         'action'=>'new'
-    //     ]);
-    // }
+    public function new()
+    {
+        return view('teachers.exams.form', [
+            'action'=>'new'
+        ]);
+    }
     //
     // public function edit($id)
     // {
