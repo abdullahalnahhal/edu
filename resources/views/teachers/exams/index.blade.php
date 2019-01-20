@@ -1,14 +1,14 @@
 @extends('layouts.body')
-@section('title', 'Questions')
+@section('title', 'Exams')
 @section('bread-crump')
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">@lang('sidebar.Questions')</h3>
+        <h3 class="text-primary">@lang('sidebar.Exams')</h3>
     </div>
   	<div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">@lang('sidebar.Dashboard')</a></li>
-            <li class="breadcrumb-item active">@lang('sidebar.Years')</li>
+            <li class="breadcrumb-item active">@lang('sidebar.Exams')</li>
         </ol>
     </div>
 </div>
@@ -19,11 +19,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <a href='{{route('teachers.questions.new')}}' class="card-title btn btn-warning btn-addon btn-flat text-white" data-toggle="tooltip" data-placement="top" data-original-title="@lang('common.New')">
+                <a href='{{route('teachers.exams.new')}}' class="card-title btn btn-warning btn-addon btn-flat text-white" data-toggle="tooltip" data-placement="top" data-original-title="@lang('common.New')">
                 	<i class='ti-plus'></i> @lang('common.New')
                 </a>
                 <div class="table-responsive m-t-40">
-	                @include('layouts.tables.questions.questions')
+	                @include('layouts.tables.exams.exams')
                 </div>
             </div>
         </div>

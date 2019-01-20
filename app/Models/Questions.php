@@ -22,7 +22,7 @@ class Questions extends Model
         'term_id',
         'subject_id',
         'unit_id',
-    	'type_id',
+    	  'type_id',
   	];
 
 	public function level()
@@ -40,9 +40,14 @@ class Questions extends Model
         return $this->belongsTo('App\Models\Terms', 'term_id', 'id');
     }
 
-    public function subject()
+		public function subject()
     {
         return $this->belongsTo('App\Models\Subjects', 'subject_id', 'id');
+    }
+
+		public function unit()
+    {
+        return $this->belongsTo('App\Models\Units', 'unit_id', 'id');
     }
 
     public function type()

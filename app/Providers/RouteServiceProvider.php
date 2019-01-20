@@ -49,6 +49,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapTeacherUnitsRoutes();
         $this->mapTeacherQuestionTypesRoutes();
         $this->mapTeacherQuestionsRoutes();
+        $this->mapTeacherExamsRoutes();
     }
 
     /**
@@ -152,4 +153,13 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace('App\Http\Controllers\TeachersControllers')
              ->group(base_path('routes/teachers/questions.php'));
     }
+    protected function mapTeacherExamsRoutes()
+    {
+        Route::prefix('/teacher/exams')
+             ->middleware(['web', 'auth'])
+             ->name('teachers.exams')
+             ->namespace('App\Http\Controllers\TeachersControllers')
+             ->group(base_path('routes/teachers/exams.php'));
+    }
+
 }

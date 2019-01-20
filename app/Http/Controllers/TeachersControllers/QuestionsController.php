@@ -19,17 +19,18 @@ class QuestionsController extends Controller
     public function index()
     {
         $questions = Questions::all();
+
         return view('teachers.questions.index', [
             'questions'=>$questions
         ]);
     }
-    // public function get($id)
-    // {
-    //     $group = Groups::find($id);
-    //     return view('teachers.groups.view', [
-    //         'group'=>$group,
-    //     ]);
-    // }
+    public function get($id)
+    {
+        $question = Questions::find($id);
+        return view('teachers.questions.view', [
+            'question'=>$question,
+        ]);
+    }
     public function new()
     {
         return view('teachers.questions.form', [
@@ -107,7 +108,7 @@ class QuestionsController extends Controller
                 return redirect()->route('teachers.questions')->with('updated', 'Updated Successfully ... !');
             }
         }
-        
+
         return back()->withErrors('Not Updated Please Call Engineer ... !');
     }
     public function delete ($id)

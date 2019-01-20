@@ -18,6 +18,8 @@ return[
 	'Duration' => 'Duration',
 	'Points' => 'Points',
 	'Type' => 'Type',
+	'Term' => 'Term',
+	'Unit' => 'Unit',
 ];
 
 ?>

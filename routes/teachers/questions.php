@@ -6,4 +6,4 @@ Route::get('/{id}/edit', 'QuestionsController@edit')->where(['id' => '[0-9]+'])-
 Route::get('/{id}/delete', 'QuestionsController@delete')->where(['id' => '[0-9]+'])->name('.delete');
 Route::post('/', 'QuestionsController@create')->name('.create');
 Route::put('/{id}', 'QuestionsController@update')->where(['id' => '[0-9]+'])->name('.update');
-
+?>

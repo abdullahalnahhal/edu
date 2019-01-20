@@ -7,7 +7,7 @@
             <ul id="sidebarnav">
                 <!-- <li class="nav-devider"></li> -->
                 <li class="nav-label">@lang('sidebar.Settings')</li>
-                <li> 
+                <li>
                     <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-gears"></i><span class="hide-menu">@lang('sidebar.Settings') </span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('teachers.levels')}}">@lang('sidebar.Levels') </a></li>
@@ -20,12 +20,13 @@
                     </ul>
                 </li>
                 <li class="nav-label">@lang('sidebar.Exams')</li>
-                <li> 
+                <li>
                     <a class="has-arrow  " href="#" aria-expanded="false">
                         <i class="fa fa-comments"></i>
                         <span class="hide-menu">@lang('sidebar.Exams') </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('teachers.exams')}}">@lang('sidebar.Exams') </a></li>
                         <li><a href="{{route('teachers.questions')}}">@lang('sidebar.Questions') </a></li>
                     </ul>
                 </li>
