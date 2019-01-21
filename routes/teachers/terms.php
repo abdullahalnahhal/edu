@@ -7,4 +7,4 @@ Route::get('/{id}/edit', 'TermsController@edit')->where(['id' => '[0-9]+'])->nam
 Route::get('/{id}/delete', 'TermsController@delete')->where(['id' => '[0-9]+'])->name('.delete');
 Route::post('/', 'TermsController@create')->name('.create');
 Route::put('/{id}', 'TermsController@update')->where(['id' => '[0-9]+'])->name('.update');
-
+?>
