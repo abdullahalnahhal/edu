@@ -7,6 +7,7 @@ return [
 	'View' => 'View',
 	'Save' => 'Save',
 	'Edit' => 'Edit',
+	'Add Question' => 'Add Question',
 ];
 
 ?>

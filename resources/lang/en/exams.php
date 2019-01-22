@@ -10,6 +10,10 @@ return [
   'Units' => 'Units',
   'Subject' => 'Subject',
   'Unit' => 'Unit',
+  'Question Type' => 'Question Type',
+  'Max Points' => 'Max Points',
+  'Min Points' => 'Min Points',
+  'Exam Title' => 'Exam Title',
 ];
 
 ?>

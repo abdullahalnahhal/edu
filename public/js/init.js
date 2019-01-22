@@ -85,6 +85,17 @@ Command = function ()
 	{
 		val = element.val();
 		fill = element.attr('fill');
+		if (isset(element.attr('fill-type'))) {
+			fill_type = element.attr('fill-type');
+		}else{
+			fill_type = 'id';
+		}
+		if (fill_type == 'class')
+		{
+			fill_type = '.';
+		}else{
+			fill_type = '#';
+		}
 		if (val) {
 			source = element.attr('source');
 			source = source.replace("%id%", val);
@@ -96,11 +107,12 @@ Command = function ()
 			opts = filler.options(data, option_value, option_text);
 			if (opts) {
 				opts = "<option></option>"+opts;
-				$("#"+fill).html(opts);
-				$("#"+fill).prop('disabled', false);
+				console.log(fill_type+fill);
+				$(fill_type+fill).html(opts);
+				$(fill_type+fill).prop('disabled', false);
 			}else{
-				$("#"+fill).html("");
-				$("#"+fill).prop('disabled', true);
+				$(fill_type+fill).html("");
+				$(fill_type+fill).prop('disabled', true);
 			}
 			}, function(){}, function(){
 				$("#"+spinner).show();
@@ -268,41 +280,33 @@ Command = function ()
 	this.duplicate = function(element)
 	{
 		temp = element.attr('template');
-
 		target = element.attr('target');
 		hidden = element.attr('hdn');
-		console.log(hidden);
 		template_name = temp;
 		original = $('#'+temp);
-
 		temp = $('#'+temp).clone();
-
 		temp.removeClass('command');
 		temp.removeAttr('template');
 		temp.removeAttr('items');
-
 		elements = element.attr('items');
 		elements = elements.split(",");
-
 		if (!isset(storage.counter)) {
 			storage['counter'] = {};
 		}
-
 		if (!isset(storage.counter[template_name])) {
 			storage['counter'][template_name] = {};
 			storage['counter'][template_name]['step'] = 1;
 			storage.counter[template_name]['elements'] = [0];
 		}
-
 		for (var i = 0; i < elements.length; i++) {
 			if (temp.find('[item="'+elements[i]+'"]').attr('type') == 'checkbox') {
 				temp.find('[item="'+elements[i]+'"]').attr('value', storage.counter[template_name].step);
 				temp.find('[item="'+elements[i]+'"]').attr('name', elements[i]+"[]");
-				
 			}else{
 				temp.find('[item="'+elements[i]+'"]').attr('name', elements[i]+"-"+storage.counter[template_name].step);
 			}
 			temp.find('[item="'+elements[i]+'"]').attr('id', elements[i]+"-"+storage.counter[template_name].step);
+			temp.find('[item="counter"]').text(storage.counter[template_name].step+1);
 		}
 
 		temp.attr('id', template_name+"-"+storage.counter[template_name].step);
@@ -390,7 +394,7 @@ Templates = function()
 				'<button type="button" class="btn btn-danger btn-flat btn-addon" onclick="common.unduplicate(\''+removable+'\', \''+step+'\', \''+hidden+'\')">\n'+
 					'<i class="ti-minus" item="remove" ></i>\n'+
 				'</button>\n'+
-			'</div>\n'+		
+			'</div>\n'+
 		'</div>\n';
 		return element;
 	}
